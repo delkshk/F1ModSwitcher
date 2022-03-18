@@ -38,6 +38,10 @@ playGame_btn.grid(row=2, column=0, pady=20)
 # GameLocation
 gameLocation_label = Label(app, text=settings["game_folder"], font=('arial', 12), pady=0)
 gameLocation_label.grid(row=20, column=0, sticky=W)
+# Mods On
+labelText = "Mod Installed? " + settings["modsOn"]
+gameLocation_label = Label(app, text=labelText, font=('arial', 12), pady=0)
+gameLocation_label.grid(row=19, column=0, sticky=W)
 
 app.title("F1 Switcher")
 app.geometry("700x300")

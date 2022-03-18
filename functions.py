@@ -27,6 +27,8 @@ def installMods():
     modsFiles = settings["game_folder"] + "\\" + settings["mm_folder"] + "\\" + settings["mm_files"]
     gameRoot = settings["game_folder"]
     replaceFiles(modsFiles,gameRoot,fl.modFiles())
+    writeJson("modsOn","true")
+    
     return True
 
 def removeMods():
@@ -36,7 +38,19 @@ def removeMods():
     backupFiles = settings["game_folder"] + "\\" + settings["mm_folder"] + "\\" + settings["bkp_files"]
     gameRoot = settings["game_folder"]
     replaceFiles(backupFiles,gameRoot,fl.backupFiles())
+    writeJson("modsOn","false")
     return True
+
+def writeJson(key,value):
+    with open('settings.json') as f:
+        data = json.load(f)
+
+    data[key] = value
+
+    print(data[key])
+
+    with open('settings.json', 'w') as f:
+        json.dump(data, f)  
 
 def setGameFolder(location):
     location = location.get()
